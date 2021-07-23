@@ -5,6 +5,8 @@ import ItemAddExample from "./ItemAddExample";
 import HookuseEffectExample from "./HookuseEffectExample";
 import HooksuseReducerExample from "./HooksuseReducerExample";
 import HooksuseReducerExample2 from "./HooksuseReducerExample2";
+import TodoTemplate from "./components/TodoTemplate";
+import TodoTempContainer from "./components";
 
 const App = () => {
   // return <OnKeyPressEventExample />;
@@ -12,7 +14,8 @@ const App = () => {
   // return <ItemAddExample />;
   // return <HookuseEffectExample />;
   // return <HooksuseReducerExample />;
-  return <HooksuseReducerExample2 />;
+  // return <HooksuseReducerExample2 />;
+  return <TodoTempContainer />;
 };
 
 export default App;
