@@ -6,7 +6,7 @@ import {
 } from "react-icons/md";
 import "./TodoListItem.css";
 import cn from "classnames";
-const TodoListItem = ({ todo, onRemove, onToggle }) => {
+const TodoListItem = ({ todo, onRemove, onToggle, style }) => {
   const { id, text, checked } = todo;
   return (
     <div className="TodoListItem">
