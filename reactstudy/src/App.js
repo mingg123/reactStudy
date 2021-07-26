@@ -1,13 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 
-import ItemAddExample from "./ItemAddExample";
-import HookuseEffectExample from "./HookuseEffectExample";
-import HooksuseReducerExample from "./HooksuseReducerExample";
-import HooksuseReducerExample2 from "./HooksuseReducerExample2";
-import TodoTemplate from "./components/TodoTemplate";
-import TodoTempContainer from "./components";
-import HookuseMemoExample from "./HookuseMemoExample";
+import AxiosExample from "./AxiosExample";
 
 const App = () => {
   // return <OnKeyPressEventExample />;
@@ -17,7 +11,8 @@ const App = () => {
   // return <HooksuseReducerExample />;
   // return <HooksuseReducerExample2 />;
   // return <TodoTempContainer />;
-  return <HookuseMemoExample />;
+  // return <HookuseMemoExample />;
+  return <AxiosExample />;
 };
 
 export default App;
