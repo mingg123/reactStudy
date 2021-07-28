@@ -3,6 +3,7 @@ import "./App.css";
 
 import AxiosExample from "./AxiosExample";
 import NewsList from "./components/News/NewsList";
+import NewsMain from "./components/News";
 
 const App = () => {
   // return <OnKeyPressEventExample />;
@@ -14,7 +15,7 @@ const App = () => {
   // return <TodoTempContainer />;
   // return <HookuseMemoExample />;
   // return <AxiosExample />;
-  return <NewsList />;
+  return <NewsMain />;
 };
 
 export default App;
