@@ -6,7 +6,7 @@ const AxiosExample = () => {
   const onClick = async () => {
     try {
       const response = await axios.get(
-        "https://jsonplaceholder.typicode.com/todos/1"
+        "http://localhost:8083/api/shopping/search?query=짜장면"
       );
       setData(response.data);
     } catch (e) {
