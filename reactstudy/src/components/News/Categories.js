@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 const CategoresBlock = styled.div`
@@ -12,7 +13,7 @@ const CategoresBlock = styled.div`
   }
 `;
 
-const Category = styled.div`
+const Category = styled(NavLink)`
   font-size: 1.125rem;
   cursor: pointer;
   white-spze: pre;
@@ -23,21 +24,19 @@ const Category = styled.div`
   &:hover {
     color: #495057;
   }
+
+  &.active {
+    font-weight: 600;
+    border-bottom: 2px solid #22b8cf;
+    color: #22b8cf;
+    &:hover {
+      color: #ebc9db;
+    }
+  }
+
   & + & {
     margin-left: 1rem;
   }
-
-  // tab처럼 클릭한거에 밑줄 되도록
-  ${(props) =>
-    props.active &&
-    css`
-      font-weight: 600;
-      border-bottom: 2px solid #22b8cf;
-      color: #22b8cf;
-      &:hover {
-        color: #ebc9db;
-      }
-    `}
 `;
 const categories = [
   {
@@ -69,14 +68,17 @@ const categories = [
     text: "기술",
   },
 ];
-const Categories = ({ onSelect, category }) => {
+
+const Categories = () => {
   return (
     <CategoresBlock>
       {categories.map((c) => (
         <Category
           key={c.name}
-          active={category === c.name}
-          onClick={() => onSelect(c.name)}
+          activeClassName="active"
+          exact={c.name === "all"}
+          to={c.name === "all" ? "/" : `/${c.name}`}
+          //   active={category === c.name}
         >
           {c.text}
         </Category>
@@ -84,5 +86,24 @@ const Categories = ({ onSelect, category }) => {
     </CategoresBlock>
   );
 };
+
+// const Categories = ({ onSelect, category }) => {
+//   return (
+//     <CategoresBlock>
+//       {categories.map((c) => (
+//         <Category
+//           key={c.name}
+//           activeClassName="active"
+//           exact={c.name === "all"}
+//           to={c.name === "all" ? "/" : `/${c.name}`}
+//           //   active={category === c.name}
+//           onClick={() => onSelect(c.name)}
+//         >
+//           {c.text}
+//         </Category>
+//       ))}
+//     </CategoresBlock>
+//   );
+// };
 
 export default Categories;
