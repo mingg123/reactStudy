@@ -6,6 +6,8 @@ import NewsList from "./components/News/NewsList";
 import NewsMain from "./components/News";
 import ColorBox from "./context/ColorBox";
 import ColorMain from "./context";
+import CounterMain from "./components/ReduxExample";
+import ReduxMain from "./components/ReduxExample/modules/ReduxMain";
 
 const App = () => {
   // return <OnKeyPressEventExample />;
@@ -18,7 +20,9 @@ const App = () => {
   // return <HookuseMemoExample />;
   // return <AxiosExample />;
   // return <NewsMain />;
-  return <ColorMain />;
+  // return <ColorMain />;
+  // return <CounterMain />;
+  return <ReduxMain />;
 };
 
 export default App;
