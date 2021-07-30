@@ -1,0 +1,18 @@
+.toggle {
+  border: 2px solid black;
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+  box-sizing: border-box;
+}
+
+.toggle.active {
+  background: yellow;
+}
+
+.num {
+  margin-top: 70px;
+}
+
+
+/*# sourceMappingURL=/redux.9ad09f98.css.map */
