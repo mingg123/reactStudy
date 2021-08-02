@@ -1,10 +1,12 @@
 import React from "react";
-import CounterContainer from "../../ReduxExample/containers/CounterContainer";
+import CounterContainer from "../containers/CounterContainer";
+import SampleContainer from "../containers/SampleContainer";
 
 const MiddlewareApp = () => {
   return (
     <div>
-      <CounterContainer />
+      {/* <CounterContainer /> */}
+      <SampleContainer />
     </div>
   );
 };
