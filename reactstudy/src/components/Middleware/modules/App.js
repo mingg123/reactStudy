@@ -5,8 +5,8 @@ import SampleContainer from "../containers/SampleContainer";
 const MiddlewareApp = () => {
   return (
     <div>
-      {/* <CounterContainer /> */}
-      <SampleContainer />
+      <CounterContainer />
+      {/* <SampleContainer /> */}
     </div>
   );
 };
