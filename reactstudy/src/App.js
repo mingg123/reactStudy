@@ -8,6 +8,7 @@ import ColorBox from "./context/ColorBox";
 import ColorMain from "./context";
 import CounterMain from "./components/ReduxExample";
 import ReduxMain from "./components/ReduxExample/modules/ReduxMain";
+import MiddlewareMain from "./components/Middleware/modules";
 
 const App = () => {
   // return <OnKeyPressEventExample />;
@@ -22,7 +23,8 @@ const App = () => {
   // return <NewsMain />;
   // return <ColorMain />;
   // return <CounterMain />;
-  return <ReduxMain />;
+  // return <ReduxMain />;
+  return <MiddlewareMain />;
 };
 
 export default App;

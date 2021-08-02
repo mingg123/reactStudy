@@ -1,7 +1,8 @@
 import React, { useCallback } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
 import { bindActionCreators } from "redux";
-import Counter from "../Counter";
+import Counter from "../../Middleware/components/Counter";
+
 import useActions from "../lib/useActions";
 import { decrease, increase } from "../modules/counter";
 
