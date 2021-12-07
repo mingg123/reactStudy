@@ -15,8 +15,17 @@ const SampleContainer = ({
 }) => {
   const dispatch = useDispatch();
   useEffect(() => {
-    getPost(4);
-    getUsers();
+    const fn = async () => {
+      try {
+        await getPost(1);
+        await getUsers(1);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fn();
+    // getPost(4);
+    // getUsers();
   }, [dispatch, getPost, getUsers]);
   return (
     <Sample
@@ -29,11 +38,13 @@ const SampleContainer = ({
 };
 
 export default connect(
-  ({ sample }) => ({
+  ({ sample, loading }) => ({
     post: sample.post,
     users: sample.users,
-    loadingPost: sample.loading.GET_POST,
-    loadingUsers: sample.loading.GET_USERS,
+    loadingPost: loading["sample/GET_POST"],
+    loadingUsers: loading["sample/GET_USERS"],
+    // loadingPost: sample.loading.GET_POST,
+    // loadingUsers: sample.loading.GET_USERS,
   }),
   {
     getPost,
