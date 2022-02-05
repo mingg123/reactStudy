@@ -34,6 +34,17 @@ exports.register = async ctx => {
     delete data.hashedPassword;
     // ctx.body = data;
     ctx.body = user.serialize();
+
+    const token = user.generateToken();
+    ctx.cookies.set('access_token', token, {
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+      httpOnly: true,
+      secureProxy: true,
+    });
+    // ctx.cookies.set('access_token', token, {
+    //   maxAge: 1000 * 60 * 60 * 24 * 7,
+    //   httpnly: true,
+    // });
   } catch (e) {
     ctx.throw(500, e);
   }
@@ -57,39 +68,28 @@ exports.login = async ctx => {
       return;
     }
     ctx.body = user.serialize();
+    const token = user.generateToken();
+    console.log('auth token : ');
+    console.log(token);
+    ctx.cookies.set('access_token', token, {
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+      httpnly: true,
+    });
   } catch (e) {
     ctx.throw(500, e);
   }
 };
 
 exports.check = async ctx => {
-  const { id } = ctx.params;
-  try {
-    // const post = posts.find(p => p.id.toString() === id);
-    const post = await Post.findById(id).exec();
-    if (!post) {
-      ctx.status = 404;
-      ctx.body = {
-        message: '포스트가 존재하지 않습니다.',
-      };
-      return;
-    }
-    ctx.body = post;
-  } catch (e) {
-    ctx.throw(500, e);
+  const { user } = ctx.state;
+  if (!user) {
+    ctx.status = 401;
+    return;
   }
+  ctx.body = user;
 };
 
 exports.logout = ctx => {
-  const { id } = ctx.params;
-  const index = posts.findIndex(p => p.id.toString() === id);
-  if (index === -1) {
-    ctx.status = 404;
-    ctx.body = {
-      message: '포스트가 존재하지 않습니다.',
-    };
-    return;
-  }
-  posts.splice(index, 1);
-  ctx.status = 204;
+  ctx.cookies.set('access_token');
+  ctx.status = 204; // No Content
 };

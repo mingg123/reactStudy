@@ -40,7 +40,7 @@ exports.read = async ctx => {
     if (!post) {
       ctx.status = 404;
       ctx.body = {
-        message: '포스트가 존재하지 않습니다.',
+        // message: '포스트가 존재하지 않습니다.',
       };
       return;
     }
@@ -56,7 +56,7 @@ exports.remove = ctx => {
   if (index === -1) {
     ctx.status = 404;
     ctx.body = {
-      message: '포스트가 존재하지 않습니다.',
+      // message: '포스트가 존재하지 않습니다.',
     };
     return;
   }

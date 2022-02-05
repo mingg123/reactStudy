@@ -4,7 +4,7 @@ import bodyParser from 'koa-bodyparser';
 import mongoose from 'mongoose';
 
 import api from './api';
-require('dotenv').config();
+// require('dotenv').config();
 
 const { PORT, MONGO_URI } = process.env;
 
