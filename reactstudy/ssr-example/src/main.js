@@ -1,10 +1,12 @@
-require('dotenv').config();
-const Koa = require('koa');
-const Router = require('koa-router');
-const bodyParser = require('koa-bodyparser');
-const mongoose = require('mongoose');
+import Koa from 'koa';
+import Router from 'koa-router';
+import bodyParser from 'koa-bodyparser';
+import mongoose from 'mongoose';
 
-// const { PORT, MONGO_URI } = process.env;
+import api from './api';
+require('dotenv').config();
+
+const { PORT, MONGO_URI } = process.env;
 
 // mongoose
 //   .connect(MONGO_URI, { useNewUrlParser: true })
@@ -18,25 +20,18 @@ const mongoose = require('mongoose');
 const app = new Koa();
 const router = new Router();
 
-mongoose
-  .connect('mongodb://127.0.0.1:27017/blog', { useNewUrlParser: true })
-  .then(() => {
-    console.log('Connected to MongoDB');
-  })
-  .catch(e => {
-    console.error(e);
-  });
-const api = require('./api');
-
+//라우터 설정
 router.use('/api', api.routes());
 
 app.use(bodyParser());
 
 app.use(router.routes()).use(router.allowedMethods());
 
-const port = 4000;
+// const port = PORT || 4000;
 
-app.listen(port, () => {
+const port = 3000;
+
+app.listen(3000, () => {
   console.log('Listening to port %d', port);
 });
 
