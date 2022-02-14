@@ -1,13 +1,13 @@
-import React from "react";
+import React from 'react';
 
 const TodoItem = ({ todo, onToggle, onRemove }) => {
   return (
     <div>
       <input
-        type="checkbox"
         onClick={() => onToggle(todo.id)}
         checked={todo.done}
-        readOntly={true}
+        readOnly={true}
+        type="checkbox"
       />
       <span>{todo.text}</span>
       <button onClick={() => onRemove(todo.id)}>삭제</button>
@@ -23,22 +23,21 @@ const Todos = ({
   onToggle,
   onRemove,
 }) => {
-  const onSubmit = (e) => {
-    e.preventDfault();
+  const onSubmit = e => {
+    e.preventDefault();
     onInsert(input);
-    onChangeInput("");
+    onChangeInput('');
   };
-  const onChange = (e) => onChangeInput(e.target.value);
+  const onChange = e => onChangeInput(e.target.value);
+
   return (
     <div>
       <form onSubmit={onSubmit}>
         <input value={input} onChange={onChange} />
-        <button onClick={onSubmit} type="submit">
-          등록
-        </button>
+        <button type="submit">등록</button>
       </form>
       <div>
-        {todos.map((todo) => (
+        {todos.map(todo => (
           <TodoItem
             todo={todo}
             key={todo.id}
@@ -46,14 +45,8 @@ const Todos = ({
             onRemove={onRemove}
           />
         ))}
-        {/* <TodoItem />
-        <TodoItem />
-        <TodoItem />
-        <TodoItem />
-        <TodoItem /> */}
       </div>
     </div>
   );
 };
-
 export default Todos;
