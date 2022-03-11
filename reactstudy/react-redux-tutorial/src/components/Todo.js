@@ -1,13 +1,11 @@
-import React from 'react';
-
 const TodoItem = ({ todo, onToggle, onRemove }) => {
   return (
     <div>
       <input
-        onClick={() => onToggle(todo.id)}
+        type="checkbox"
+        onClick={e => onToggle(todo.id)}
         checked={todo.done}
         readOnly={true}
-        type="checkbox"
       />
       <span>{todo.text}</span>
       <button onClick={() => onRemove(todo.id)}>삭제</button>
@@ -28,6 +26,7 @@ const Todos = ({
     onInsert(input);
     onChangeInput('');
   };
+
   const onChange = e => onChangeInput(e.target.value);
 
   return (
@@ -49,4 +48,5 @@ const Todos = ({
     </div>
   );
 };
+
 export default Todos;
