@@ -1,35 +1,35 @@
-import React from 'react';
-import { ColorConsumer } from '../color';
+import { valueToNode } from '@babel/types';
+import React, { useContext } from 'react';
+import ColorContext, { ColorConsumer } from '../context/color';
+import ColorBox from './ColorBox';
 
 const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
 
-const SelectColors = () => {
+const SelectColor = () => {
+  const { actions } = useContext(ColorContext);
   return (
-    <div>
-      <h2>색상을 선택하세요</h2>
-      <ColorConsumer>
-        {({ actions }) => (
-          <div style={{ display: 'flex' }}>
-            {colors.map(color => (
-              <div
-                key={color}
-                style={{
-                  background: color,
-                  width: '24px',
-                  height: '24px',
-                  cursor: 'pointer',
-                }}
-                onClick={() => actions.setColor(color)}
-                onContextMenu={e => {
-                  e.preventDefault();
-                  actions.setSubcolor(color);
-                }}
-              />
-            ))}
-          </div>
-        )}
-      </ColorConsumer>
-    </div>
+    <>
+      <div>
+        {colors.map(color => (
+          <div
+            key={color}
+            style={{
+              background: color,
+              width: '24px',
+              height: '24px',
+              cursor: 'pointer',
+            }}
+            onClick={() => {
+              actions.setColor(color);
+            }}
+            onContextMenu={e => {
+              e.preventDefault();
+              actions.setSubColor(color);
+            }}
+          ></div>
+        ))}
+      </div>
+    </>
   );
 };
-export default SelectColors;
+export default SelectColor;
