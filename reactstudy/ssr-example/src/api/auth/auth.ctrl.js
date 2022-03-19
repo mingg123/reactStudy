@@ -16,6 +16,8 @@ exports.register = async ctx => {
   //   ctx.body = result.error;
   //   return;
   // }
+  console.log('ctx:');
+  console.log(ctx);
   const { username, password } = ctx.request.body;
   try {
     const exists = await User.findByUsername(username);
